@@ -16,7 +16,7 @@ async def get_collection(jarm_type: str):
 async def create_jarm(jarm: JarmCreate, jarm_type: str):
     collection = await get_collection(jarm_type)
     jarm_dict = jarm.dict()
-    jarm_dict["_id"] = ObjectId()
+    jarm_dict["_id"] = ObjectId()  # db에 있는 마지막 ObjectId를 기준으로 바꾸기?
     await collection.insert_one(jarm_dict)
     return {"message": "JARM is successfully created"}
 
